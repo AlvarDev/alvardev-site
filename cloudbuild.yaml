@@ -1,0 +1,19 @@
+steps:
+  # Build app
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${COMMIT_SHA}']
+    dir: 'app'  
+    id: build
+
+ # Create release in Google Cloud Deploy
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
+    entrypoint: gcloud
+    args: 
+      [
+        "deploy", "releases", "create", "rel-${SHORT_SHA}",
+        "--delivery-pipeline", "cloud-run-pipeline",
+        "--region", "southamerica-east1",
+        "--annotations", "commitId=${REVISION_ID}",
+        "--images", "southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${COMMIT_SHA}"
+      ]
+    id: create-release
