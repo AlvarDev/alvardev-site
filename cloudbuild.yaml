@@ -19,6 +19,6 @@ steps:
         "--delivery-pipeline", "cloud-run-pipeline",
         "--region", "southamerica-east1",
         "--annotations", "commitId=${REVISION_ID}",
-        "--images", "southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}"
+        "--images", "mysite=southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}"
       ]
     id: create-release
