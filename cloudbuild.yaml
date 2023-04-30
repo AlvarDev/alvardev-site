@@ -1,11 +1,16 @@
 steps:
   # Build app
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${COMMIT_SHA}']
-    dir: 'app'  
+    args: ['build', '-t', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}', '.']
+    dir: 'src'  
     id: build
+      
+  # Store container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:$BUILD_ID']
+    id: store
 
- # Create release in Google Cloud Deploy
+  # Create release in Google Cloud Deploy
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
     entrypoint: gcloud
     args: 
@@ -14,6 +19,6 @@ steps:
         "--delivery-pipeline", "cloud-run-pipeline",
         "--region", "southamerica-east1",
         "--annotations", "commitId=${REVISION_ID}",
-        "--images", "southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${COMMIT_SHA}"
+        "--images", "southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}"
       ]
     id: create-release
