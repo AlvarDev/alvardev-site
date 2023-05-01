@@ -28,3 +28,12 @@ func aboutHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, msg, http.StatusInternalServerError)
 	}
 }
+
+// portafolioHandler responds to request by rendering a Portafolio HTML page
+func portafolioHandler(w http.ResponseWriter, r *http.Request) {
+	if err := tmpl.ExecuteTemplate(w, "portafolio", nil); err != nil {
+		msg := http.StatusText(http.StatusInternalServerError)
+		log.Printf("tempalte.Execute: %v", err)
+		http.Error(w, msg, http.StatusInternalServerError)
+	}
+}
