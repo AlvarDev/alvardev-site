@@ -25,8 +25,9 @@
     <meta name="description" content="A portfolio template that uses Material Design Lite.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>AlvarDev's Site</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-indigo.min.css" /> 
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-indigo.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css">
 
 
@@ -39,17 +40,17 @@
             <div class="mdl-layout__header-row portfolio-logo-row">
                 <span class="mdl-layout__title">
                     <div class="portfolio-logo"></div>
-										<span class="mdl-layout__title">Testing local development with Skaffold</span>
+                    <span class="mdl-layout__title">Testing local development with Skaffold</span>
                 </span>
-            </div>        
-				</header>
-				<main class="mdl-layout__content">
+            </div>
+        </header>
+        <main class="mdl-layout__content">
 
-			
-				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-  				<div class="mdl-tabs__tab-bar">
-									<a href="#portafolio-panel" class="mdl-tabs__tab {{ .PortafolioActive }}">Portafolio</a>
-									<a href="#blog-panel" class="mdl-tabs__tab {{ .BlogActive }}">Blog</a>
-									<a href="#about-panel" class="mdl-tabs__tab {{ .AboutActive }}">About</a>
-  				</div>
-				{{end}}
+
+            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                <div class="mdl-tabs__tab-bar">
+                    <a href="#portafolio-panel" class="mdl-tabs__tab">Portafolio</a>
+                    <a href="#blog-panel" class="mdl-tabs__tab is-active">Blog</a>
+                    <a href="#about-panel" class="mdl-tabs__tab">About</a>
+                </div>
+{{end}}

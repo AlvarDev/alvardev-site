@@ -22,20 +22,12 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-type templateData struct {
-	PortafolioActive string
-	BlogActive       string
-	AboutActive      string
-}
-
 func main() {
 	// Prepare template for execution.
 	tmpl = template.Must(template.New("").Funcs(template.FuncMap{}).ParseGlob("templates/*.html"))
 
 	// Define HTTP server.
 	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/about", aboutHandler)
-	http.HandleFunc("/portafolio", portafolioHandler)
 
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
