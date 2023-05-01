@@ -19,3 +19,12 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, msg, http.StatusInternalServerError)
 	}
 }
+
+// aboutHandler responds to request by rendering an About HTML page
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	if err := tmpl.ExecuteTemplate(w, "about", nil); err != nil {
+		msg := http.StatusText(http.StatusInternalServerError)
+		log.Printf("tempalte.Execute: %v", err)
+		http.Error(w, msg, http.StatusInternalServerError)
+	}
+}

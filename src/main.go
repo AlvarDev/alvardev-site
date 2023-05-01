@@ -28,6 +28,7 @@ func main() {
 
 	// Define HTTP server.
 	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/about", aboutHandler)
 
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
