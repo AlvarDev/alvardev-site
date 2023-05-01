@@ -2,4 +2,4 @@
 .vscode
 .idea
 .readmes
-*.swp
+**/*.swp

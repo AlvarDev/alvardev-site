@@ -21,5 +21,18 @@ profiles:
   manifests:
     rawYaml:
     - deploy-dev.yaml
-deploy:
-  cloudrun: {}
+  deploy:
+    cloudrun: {}
+- name: local
+  build:
+    artifacts:
+    - image: mysite
+      context: src
+      docker:
+        dockerfile: Dockerfile
+  manifests:
+    rawYaml:
+      - kubernetes-manifests/mysite.deploymeny.yaml
+      - kubernetes-manifests/mysite.service.yaml
+  deploy:
+    kubectl: {}
