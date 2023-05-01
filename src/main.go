@@ -22,6 +22,12 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
+type templateData struct {
+	PortafolioActive string
+	BlogActive       string
+	AboutActive      string
+}
+
 func main() {
 	// Prepare template for execution.
 	tmpl = template.Must(template.New("").Funcs(template.FuncMap{}).ParseGlob("templates/*.html"))

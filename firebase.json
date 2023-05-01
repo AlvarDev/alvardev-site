@@ -1,0 +1,11 @@
+  {
+    "hosting": {
+      "rewrites": [{
+        "source": "**",
+        "run": {
+          "serviceId": "mysite-dev",
+          "region": "southamerica-east1"
+        }
+      }]
+    }
+  }

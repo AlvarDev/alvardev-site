@@ -39,22 +39,22 @@
             <div class="mdl-layout__header-row portfolio-logo-row">
                 <span class="mdl-layout__title">
                     <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Testing local development with Skaffold</span>
+										<span class="mdl-layout__title">Testing local development with Skaffold</span>
                 </span>
             </div>
             <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link" href="/portafolio">Portfolio</a>
-                    <a class="mdl-navigation__link is-active" href="/">Blog</a>
-                    <a class="mdl-navigation__link" href="/about">About</a>
+												<a class="mdl-navigation__link {{ .PortafolioActive }}" href="/portafolio">Portfolio</a>
+												<a class="mdl-navigation__link {{ .BlogActive }}" href="/">Blog</a>
+												<a class="mdl-navigation__link {{ .AboutActive }}" href="/about">About</a>
                 </nav>
             </div>
         </header>
 				<div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="/portafolio">Portfolio</a>
-                <a class="mdl-navigation__link" href="/">Blog</a>
-                <a class="mdl-navigation__link" href="/about">About</a>
+										<a class="mdl-navigation__link {{ .PortafolioActive }}" href="/portafolio">Portfolio</a>
+										<a class="mdl-navigation__link {{ .BlogActive }}" href="/">Blog</a>
+										<a class="mdl-navigation__link {{ .AboutActive }}" href="/about">About</a>
             </nav>
         </div>
 
