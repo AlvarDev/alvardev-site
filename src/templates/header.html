@@ -41,21 +41,15 @@
                     <div class="portfolio-logo"></div>
 										<span class="mdl-layout__title">Testing local development with Skaffold</span>
                 </span>
-            </div>
-            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
-                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-												<a class="mdl-navigation__link {{ .PortafolioActive }}" href="/portafolio">Portfolio</a>
-												<a class="mdl-navigation__link {{ .BlogActive }}" href="/">Blog</a>
-												<a class="mdl-navigation__link {{ .AboutActive }}" href="/about">About</a>
-                </nav>
-            </div>
-        </header>
-				<div class="mdl-layout__drawer mdl-layout--small-screen-only">
-            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-										<a class="mdl-navigation__link {{ .PortafolioActive }}" href="/portafolio">Portfolio</a>
-										<a class="mdl-navigation__link {{ .BlogActive }}" href="/">Blog</a>
-										<a class="mdl-navigation__link {{ .AboutActive }}" href="/about">About</a>
-            </nav>
-        </div>
+            </div>        
+				</header>
+				<main class="mdl-layout__content">
 
+			
+				<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  				<div class="mdl-tabs__tab-bar">
+									<a href="#portafolio-panel" class="mdl-tabs__tab {{ .PortafolioActive }}">Portafolio</a>
+									<a href="#blog-panel" class="mdl-tabs__tab {{ .BlogActive }}">Blog</a>
+									<a href="#about-panel" class="mdl-tabs__tab {{ .AboutActive }}">About</a>
+  				</div>
 				{{end}}
