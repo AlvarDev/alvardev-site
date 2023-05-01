@@ -1,9 +1,7 @@
 {{ define "portafolio"  }}
+<div class="mdl-tabs__panel" id="portafolio-panel">
 
-{{ template "header" .}}
-
-        <main class="mdl-layout__content">
-            <div class="mdl-grid portfolio-max-width">
+<div class="mdl-grid portfolio-max-width">
                 <div class="mdl-cell mdl-card mdl-shadow--4dp portfolio-card">
                     <div class="mdl-card__media">
                         <img class="article-image" src=" /static/images/example-work01.jpg" border="0" alt="">
@@ -132,5 +130,5 @@
                 </div>
             </div>
 
-{{ template "footer" . }}
+</div>
 {{end}}
