@@ -21,7 +21,7 @@ profiles:
   build:
     tagPolicy:
       envTemplate:
-        template: "{{.TAG_NAME2}}"
+        template: "{{.TAG_NAME}}"
     artifacts:
     - image: mysite
       context: src
