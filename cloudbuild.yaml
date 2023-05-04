@@ -1,6 +1,7 @@
 steps:
 - name: gcr.io/$PROJECT_ID/skaffold:alpha
-  args: ['build', '--tag', '$TAG_NAME', '-p', 'dev']
+  args: ['build', '-p', 'dev']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=southamerica-east1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
+  - 'TAG_NAME2=lacsm'
