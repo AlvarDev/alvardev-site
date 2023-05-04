@@ -4,4 +4,4 @@ steps:
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=southamerica-east1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
-  - 'TAG_NAME2=lacsm'
+  - 'TAG_NAME2=$TAG_NAME'
