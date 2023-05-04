@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/$PROJECT_ID/skaffold:alpha
-  args: ['build', '-p', 'dev', '--default-repo', 'southamerica-east1-docker.pkg.dev/sre-demos/mysite-repo']
+  args: ['build', '--tag=$TAG_NAME', '-p', 'dev', '--default-repo', 'southamerica-east1-docker.pkg.dev/sre-demos/mysite-repo']
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=southamerica-east1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
