@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/$PROJECT_ID/skaffold:alpha
   args: ['build', '--tag=$TAG_NAME', '-f=skaffold.yaml', '-p', 'dev']
-    #  env:
-    #- 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-    #- 'CLOUDSDK_CONTAINER_CLUSTER=[YOUR_CLUSTER_NAME]'
+    env:
+    - 'CLOUDSDK_COMPUTE_ZONE=southamerica-east1-c'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=mycluster'
