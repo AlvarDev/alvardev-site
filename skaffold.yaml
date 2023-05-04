@@ -18,21 +18,12 @@ metadata:
   name: mysite-app
 profiles:
 - name: dev
-  manifests:
-    rawYaml:
-    - deploy-dev.yaml
-  deploy:
-    cloudrun: {}
-- name: local
   build:
+    tagPolicy:
+    envTemplate:
+      template: "{{.TAG_NAME}}"
     artifacts:
     - image: mysite
       context: src
       docker:
         dockerfile: Dockerfile
-  manifests:
-    rawYaml:
-      - kubernetes-manifests/mysite.deploymeny.yaml
-      - kubernetes-manifests/mysite.service.yaml
-  deploy:
-    kubectl: {}

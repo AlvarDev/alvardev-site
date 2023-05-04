@@ -1,24 +1,6 @@
 steps:
-  # Build app
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}', '.']
-    dir: 'src'  
-    id: build
-      
-  # Store container image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:$BUILD_ID']
-    id: store
-
-  # Create release in Google Cloud Deploy
-  - name: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-    entrypoint: gcloud
-    args: 
-      [
-        "deploy", "releases", "create", "rel-${SHORT_SHA}",
-        "--delivery-pipeline", "cloud-run-pipeline",
-        "--region", "southamerica-east1",
-        "--annotations", "commitId=${REVISION_ID}",
-        "--images", "mysite=southamerica-east1-docker.pkg.dev/$PROJECT_ID/mysite-repo/mysite:${BUILD_ID}"
-      ]
-    id: create-release
+- name: gcr.io/$PROJECT_ID/skaffold:alpha
+  args: ['build', '--tag=$TAG_NAME', '-f=skaffold.yaml', '-p', 'dev']
+    #  env:
+    #- 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+    #- 'CLOUDSDK_CONTAINER_CLUSTER=[YOUR_CLUSTER_NAME]'
