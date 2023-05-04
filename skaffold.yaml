@@ -19,10 +19,7 @@ metadata:
 profiles:
 - name: dev
   build:
-    tagPolicy:
-      envTemplate:
-        template: "{{.TAG_NAME}}"
-    artifacts:
+   artifacts:
     - image: mysite
       context: src
       docker:
