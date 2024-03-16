@@ -30,6 +30,7 @@ func main() {
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/genaibr", genaiBrHandler)
 	http.HandleFunc("/genaies", genaiEsHandler)
+	http.HandleFunc("/posts", getPosts)
 
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	"encoding/json"
 	"html/template"
 	"net/http"
 
@@ -28,4 +30,25 @@ func genaiBrHandler(w http.ResponseWriter, r *http.Request) {
 func genaiEsHandler(w http.ResponseWriter, r *http.Request) {
 	genaiES := "https://docs.google.com/presentation/d/e/2PACX-1vRFI80CvjOjVf_ZxVNTHhOjtYKhp9FrxxkbVqBgtYiNNBf5Xz1yEYx2vhwIISfxPSxKwbTj3USg7uyc/pub?start=false&loop=false&delayms=3000"
 	http.Redirect(w, r, genaiES, http.StatusSeeOther)
+}
+
+func getPosts(w http.ResponseWriter, r *http.Request) {
+	ctx := context.Background()
+
+	response := Response{}
+	response.Posts = getFirestorePosts(ctx)
+	responseJSON, err := json.Marshal(response)
+
+	if err != nil {
+		log.Printf("Failed to parse json: %v", err)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write(responseJSON)
+}
+
+// Response definition for response API
+type Response struct {
+	Posts []Post `json:"posts"`
 }

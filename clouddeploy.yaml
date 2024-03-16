@@ -29,5 +29,5 @@ metadata:
  name: dev-env
 description: Cloud Run development service
 run:
- location: projects/sre-demos/locations/southamerica-east1
+ location: projects/alvardevlp07/locations/southamerica-east1
 
