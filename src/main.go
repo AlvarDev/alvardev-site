@@ -19,6 +19,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/gorilla/mux"
 	"github.com/rs/zerolog/log"
 )
 
@@ -26,14 +27,17 @@ func main() {
 	// Prepare template for execution.
 	tmpl = template.Must(template.New("").Funcs(template.FuncMap{}).ParseGlob("templates/*.html"))
 
+	r := mux.NewRouter()
 	// Define HTTP server.
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/genaibr", genaiBrHandler)
-	http.HandleFunc("/genaies", genaiEsHandler)
-	http.HandleFunc("/posts", getPosts)
+	// r.HandleFunc("/", homeHandler)
+	r.HandleFunc("/genaibr", genaiBrHandler)
+	r.HandleFunc("/genaies", genaiEsHandler)
+	r.HandleFunc("/posts", getPosts).Methods(http.MethodGet, http.MethodPut, http.MethodPatch, http.MethodOptions)
+	r.Use(mux.CORSMethodMiddleware(r))
 
-	fs := http.FileServer(http.Dir("./static"))
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	// fs := r.FileServer(http.Dir("./static"))
+	// r.Handle("/static/", http.StripPrefix("/static/", fs))
+	// r.Use(mux.CORSMethodMiddleware(r))
 
 	// PORT environment variable is provided by Cloud Run.
 	port := os.Getenv("PORT")
@@ -43,7 +47,8 @@ func main() {
 
 	log.Print("Hello from Cloud Run! The container started successfully and is listening for HTTP requests on $PORT")
 	log.Printf("Listening on port %s", port)
-	err := http.ListenAndServe(":"+port, nil)
+
+	err := http.ListenAndServe(":"+port, r)
 	if err != nil {
 		log.Fatal().Err(err).Msg("Can’t start service")
 	}

@@ -33,6 +33,10 @@ func genaiEsHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getPosts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	if r.Method == http.MethodOptions {
+		return
+	}
 	ctx := context.Background()
 
 	response := Response{}
