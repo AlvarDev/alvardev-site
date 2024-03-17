@@ -12,7 +12,7 @@ type Post struct {
 	PostID      string `json:"postID"`
 	Title       string `json:"title"`
 	Src         string `json:"src"`
-	MyType      string `json:"myType"`
+	Category    string `json:"category"`
 	Description string `json:"description"`
 	Link        string `json:"link"`
 }
@@ -36,7 +36,7 @@ func getFirestorePosts(ctx context.Context) []Post {
 	defer client.Close()
 
 	posts := []Post{}
-	iter := client.Collection("posts").Documents(ctx)
+	iter := client.Collection("posts").OrderBy("order", firestore.Asc).Documents(ctx)
 	for {
 		doc, err := iter.Next()
 		if err == iterator.Done {
