@@ -33,7 +33,11 @@ func main() {
 	r.HandleFunc("/genaibr", genaiBrHandler)
 	r.HandleFunc("/genaies", genaiEsHandler)
 	r.HandleFunc("/posts", getPosts).Methods(http.MethodGet, http.MethodPut, http.MethodPatch, http.MethodOptions)
-	r.Use(mux.CORSMethodMiddleware(r))
+	//	r.Use(mux.CORSMethodMiddleware(r))
+
+	// headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
+	// originsOk := handlers.AllowedOrigins([]string{"*"})
+	// methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
 	// fs := r.FileServer(http.Dir("./static"))
 	// r.Handle("/static/", http.StripPrefix("/static/", fs))
